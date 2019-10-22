@@ -1,24 +1,17 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { selectItem } from '../../redux/shop/shop.selector';
-
+import React, {useEffect} from 'react'
 import CustomButton from '../custom-button/custom-button.component';
-
 import * as S from './item.styles';
-import { selectShowComments } from '../../redux/comments/comments.selector';
-import { getCommentsStart } from '../../redux/comments/comments.actions';
 import ItemCommentsContainer from '../item-comments/item-comments.container';
 
-const Item = ({ match }) => {
+const Item = ({ match, item, showComment, shopCleanUpError, getCommentsStart }) => {
   const { params: { brandName, model } } = match;
-  const dispatch = useDispatch();
-
-  const item = useSelector(selectItem);
-  const showComment = useSelector(selectShowComments);
-
   const { name, imageUrl, status, battery, memory, price } = item;
 
+  useEffect(() => {
+    return () => {
+      shopCleanUpError()
+    }
+  })
   return (
     <S.Container>
       <S.H3>{name}</S.H3>
@@ -45,7 +38,7 @@ const Item = ({ match }) => {
         </S.ButtonContainer>
         {
           !showComment &&
-          <S.LoadComments onClick={() => dispatch(getCommentsStart(brandName, model))}>load comments</S.LoadComments>
+          <S.LoadComments onClick={() => getCommentsStart(brandName, model)}>load comments</S.LoadComments>
         }
         {
           showComment &&
@@ -58,4 +51,4 @@ const Item = ({ match }) => {
   );
 }
 
-export default withRouter(Item);
+export default Item;

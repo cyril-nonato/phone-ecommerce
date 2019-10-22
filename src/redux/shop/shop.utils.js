@@ -16,6 +16,7 @@ export const convertCollectionsAndItemsToMap = (collections) => {
 
 export const addItemRouteToCollectionsItems = (collections) => {
   const updatedCollections = {...collections}
+  console.log(updatedCollections)
   const updatedCollectionsKeys = Object.keys(updatedCollections);
   updatedCollectionsKeys.forEach(colKey => {
     const items = updatedCollections[colKey].items;
@@ -44,3 +45,13 @@ export const collectionItem = (collection, brandName, model) => {
   const item = items[modelFilter];
   return item;
 };
+
+export const filterItem = (data, modelFilter) => {
+  const item = data.items[modelFilter];
+  if(!!item) {
+    const updatedItem = {...item, 'itemRoute': modelFilter};
+    return updatedItem
+  } else {
+    return null;
+  }
+}

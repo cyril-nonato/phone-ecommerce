@@ -1,24 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 import * as S from './sign-in.styles';
-import { googleSignInStart, emailSignInStart } from '../../redux/user/user.actions';
-import { selectUserError } from '../../redux/user/user.selectors';
 
-const SignIn = () => {
+const SignIn = ({error, googleSignInStart, emailSignInStart}) => {
 
   const [userCreds, setUserCreds] = useState({ email: '', password: '' })
-
-  const error = useSelector(selectUserError);
-
-  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
     const { email, password } = userCreds;
-    dispatch(emailSignInStart(email, password))
+    emailSignInStart(email, password)
   }
 
   const handleChange = e => {
@@ -47,7 +40,7 @@ const SignIn = () => {
           label='password' />
         <S.ButtonContainer>
           <CustomButton type='submit' text="Sign-in" />
-          <CustomButton click={() => dispatch(googleSignInStart())}
+          <CustomButton click={() => googleSignInStart()}
             type='button'
             isGoogleSignIn
             text="Sign-in with google" />

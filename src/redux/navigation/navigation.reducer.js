@@ -1,28 +1,33 @@
 import actionTypes from "./navigation.types"
 
 const INITIAL_STATE = {
-  navLinks: {
-    shop: {
+  navLinks: [
+    {
       name: 'Shop',
-      route: '/shop'
+      route: '/shop',
+      user: 'neutral'
     },
-    cart: {
+    {
       name: 'Cart',
-      route: '/cart'
+      route: '/cart',
+      user: 'neutral'
     },
-    sign_in: {
+    {
       name: 'Sign-in',
-      route: '/sign-in'
+      route: '/sign-in',
+      user: 'no-user'
     },
-    sign_up: {
+    {
       name: 'Sign-up',
-      route: '/sign-up'
+      route: '/sign-up',
+      user: 'no-user'
     },
-    sign_out: {
+    {
       name: 'Sign-out',
-      route: '/sign-out'
+      route: '/sign-out',
+      user: 'user'
     }
-  },
+  ],
   windowWidth: window.innerWidth,
   toggleSidedrawer: false,
 }

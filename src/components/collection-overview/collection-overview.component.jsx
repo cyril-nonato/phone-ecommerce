@@ -1,19 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectCollectionsAndItemsToMap } from '../../redux/shop/shop.selector';
-import CollectionPreview from '../collection-preview/collection-preview.component';
-
+import CollectionPreviewContainer from '../collection-preview/collection-preview.container';
 import * as S from './collection-overview.styles';
 
-const CollectionOverview = () => {
-
-  const collectionsMap = useSelector(selectCollectionsAndItemsToMap);
+const CollectionOverview = ({collections}) => {
 
   return (
     <S.Container>
       {
-        collectionsMap.map(collection =>
-          <CollectionPreview key={collection.id} collection={collection} />
+        collections.map(collection =>
+          <CollectionPreviewContainer key={collection.id} collection={collection} />
         )
       }
     </S.Container>

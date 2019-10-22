@@ -36,5 +36,5 @@ export const queryFailure = error => ({
 
 export const shopCleanUpError = () => ({
   type: actionTypes.SHOP_ERROR_CLEAN_UP,
-})
+});
 

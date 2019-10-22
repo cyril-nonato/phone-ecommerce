@@ -7,6 +7,7 @@ export const ErrorBoundaryContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 10rem;
+  z-index: -5;
 
   @media screen and (min-width: 700px) {
     width: 50%;

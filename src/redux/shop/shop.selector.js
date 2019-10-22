@@ -10,7 +10,7 @@ export const selectCollections = createSelector(
 
 export const selectCollectionsAndItemsToMap = createSelector(
   [selectCollections],
-  collections => convertCollectionsAndItemsToMap(collections)
+  collections => collections ? convertCollectionsAndItemsToMap(collections) : null
 );
 
 export const selectCollection = createSelector(
@@ -20,7 +20,7 @@ export const selectCollection = createSelector(
 
 export const selectCollectionMap = createSelector(
   [selectCollection],
-  collection => convertCollectionItemsToMap(collection)
+  collection => collection ? convertCollectionItemsToMap(collection) : null
 );
 
 export const selectItem = createSelector(

@@ -1,22 +1,16 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import FormInput from '../form-input/form-input.component'
 
 import * as S from './sign-up.styles';
 import CustomButton from '../custom-button/custom-button.component';
-import { signUpStart } from '../../redux/user/user.actions';
-import { selectUserError } from '../../redux/user/user.selectors';
 
-const SignUp = () => {
+const SignUp = ({error, signUpStart}) => {
   const [value, setValue] = useState({
     email: '',
     displayName: '',
     password: '',
     confirm_password: '',
   });
-  const dispatch = useDispatch();
-
-  const error = useSelector(selectUserError);
 
   const handleChange = e => {
     setValue({
@@ -36,7 +30,7 @@ const SignUp = () => {
         displayName,
         password
       }
-      dispatch(signUpStart(details))
+      signUpStart(details)
     } else {
       setPasswordError(`Passwords doesn't match`)
     }

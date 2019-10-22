@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { getCollectionsStart } from '../../redux/shop/shop.actions';
 import CollectionOverviewContainer from '../../components/collection-overview/collection-overview.container';
 
-const CollectionOverviewPage = () => {
-
-  const dispatch = useDispatch();
+const CollectionOverviewPage = ({getCollectionsStart}) => {
 
   useEffect(() => {
-    dispatch(getCollectionsStart());
-  }, [dispatch]);
+    getCollectionsStart();
+  }, [getCollectionsStart]);
 
   return (
     <CollectionOverviewContainer />

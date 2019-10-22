@@ -1,16 +1,16 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom';
-import CollectionPage from '../collection-page/collection-page.component';
-import CollectionOverviewPage from '../collection-overview-page/collection-overview-page.component';
-import ItemPage from '../item-page/item-page.component';
+import CollectionPageContainer from '../collection-page/collection-page.container';
+import ItemPageContainer from '../item-page/item-page.container';
+import CollectionOverviewPageContainer from '../collection-overview-page/collection-overview.container';
 
 const ShopPage = ({ match }) => {
 
   return (
     <Switch>
-      <Route exact path={`${match.path}`} component={CollectionOverviewPage} />
-      <Route exact path={`${match.path}/:brandName`} component={CollectionPage} />
-      <Route path={`${match.path}/:brandName/:model`} component={ItemPage} />
+      <Route exact path={`${match.path}`} component={CollectionOverviewPageContainer} />
+      <Route exact path={`${match.path}/:brandName`} component={CollectionPageContainer} />
+      <Route path={`${match.path}/:brandName/:model`} component={ItemPageContainer} />
     </Switch>
   );
 }

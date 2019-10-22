@@ -1,20 +1,16 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React from 'react';
 import * as S from './collection.styles';
-import { selectCollectionMap } from '../../redux/shop/shop.selector';
-import CollectionItem from '../collection-item/collection-item.component';
+import CollectionItemContainer from '../collection-item/collection-item.container';
 
-const Collection = () => {
-
-  const collection = useSelector(selectCollectionMap);
+const Collection = ({collection}) => {
 
   return (
     <S.Container>
-      <S.H3>{collection.brand}</S.H3>
+      <S.H3 data-testid='brand'>{collection.brand}</S.H3>
       <S.List>
         {
           collection.items.map(item =>
-            <CollectionItem key={item.id} item={item} />
+            <CollectionItemContainer key={item.id} item={item} />
           )
         }
       </S.List>

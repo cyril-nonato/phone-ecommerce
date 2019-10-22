@@ -1,14 +1,31 @@
-import {compose} from 'redux';
-import {createStructuredSelector} from 'reselect';
-import {connect} from 'react-redux';
-import { selectItemIsLoaded } from '../../redux/shop/shop.selector';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { selectItemIsLoaded, selectShopError, selectItem } from '../../redux/shop/shop.selector';
+import { selectShowComments } from '../../redux/comments/comments.selector';
+import { getCommentsStart } from '../../redux/comments/comments.actions';
+
 import WithSpinner from '../with-spinner/with-spinner.component';
 import Item from './item.component';
+import { shopCleanUpError } from '../../redux/shop/shop.actions';
 
-const mapStateToprops = createStructuredSelector({
+const mapStateToProps = createStructuredSelector({
   loading: (state) => !selectItemIsLoaded(state),
+  error: selectShopError,
+  item: selectItem,
+  showComment: selectShowComments
 });
 
-const ItemContainer = compose(connect(mapStateToprops), WithSpinner)(Item)
+const mapDispatchToProps = dispatch => ({
+  shopCleanUpError: () => dispatch(shopCleanUpError()),
+  getCommentsStart: () => dispatch(getCommentsStart())
+})
+
+const ItemContainer = compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps), 
+  WithSpinner)(Item)
 
 export default ItemContainer;

@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import { useDispatch } from 'react-redux';
 import * as S from './collection-item.styles';
 import CustomButton from '../custom-button/custom-button.component';
-import { addItemToCart } from '../../redux/cart/cart.actions';
-import { withRouter } from 'react-router-dom';
 
-const CollectionItem = ({ item, match, brand }) => {
+const CollectionItem = ({ item, match, brand, addItemToCart }) => {
+
   const { name, price, imageUrl, itemRoute } = item;
-  const dispatch = useDispatch();
   const {url, params: {brandName}} = match;
 
   const [linkUrl, setUrl] = useState(`${url}/${brand}/${itemRoute}`);
@@ -27,9 +24,9 @@ const CollectionItem = ({ item, match, brand }) => {
         </S.ImageContainer>
         <S.Price>Price: <strong>${price.toFixed(2)}</strong></S.Price>
       </S.StyleLink>
-      <CustomButton click={() => dispatch(addItemToCart(item))} type='button' text='Add to Cart' />
+      <CustomButton click={() => addItemToCart(item)} type='button' text='Add to Cart' />
     </S.Item>
   );
 }
 
-export default withRouter(CollectionItem);
+export default CollectionItem;

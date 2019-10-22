@@ -1,14 +1,22 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect'
-import { selectCurrentUserLoading } from '../../redux/user/user.selectors';
+import { createStructuredSelector } from 'reselect';
+
+import { selectCurrentUserLoading, selectUserError } from '../../redux/user/user.selectors';
 import WithSpinner from '../with-spinner/with-spinner.component';
 import SignUp from './sign-up.component';
+import { signUpStart } from '../../redux/user/user.actions';
+
 
 const mapStateToProps = createStructuredSelector({
-  loading: selectCurrentUserLoading
+  loading: selectCurrentUserLoading,
+  error: selectUserError
 });
 
-const SignUpContainer = compose(connect(mapStateToProps), WithSpinner)(SignUp);
+const mapDispatchToProps = dispatch => ({
+  signUpStart: (details) => dispatch(signUpStart(details))
+});
+
+const SignUpContainer = compose(connect(mapStateToProps, mapDispatchToProps), WithSpinner)(SignUp);
 
 export default SignUpContainer;

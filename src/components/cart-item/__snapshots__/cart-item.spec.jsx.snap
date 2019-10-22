@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart item Test Should render the component 1`] = `
+<div>
+  <li
+    class="sc-bdVaJa kmjINm"
+  >
+    <span
+      class="sc-bwzfXH lmeGay"
+    />
+    <img
+      alt="name"
+      class="sc-htpNat fXTDTN"
+      src="some-img.jpg"
+    />
+    <span
+      class="sc-bxivhb jUrasN"
+      data-testid="name"
+    >
+      name
+    </span>
+    <div
+      class="sc-EHOje AYALH"
+    >
+      <span
+        class="sc-bZQynM cUSfdM"
+        data-testid="removeItemFromCart"
+      >
+        ❮
+      </span>
+      <span
+        class="sc-gzVnrw guKtDd"
+        data-testid="quantity"
+      >
+        2
+      </span>
+      <span
+        class="sc-bZQynM cUSfdM"
+        data-testid="addItemToCart"
+      >
+        ❯
+      </span>
+    </div>
+    <span
+      class="sc-ifAKCX kEetxH"
+    >
+      200.00
+    </span>
+    <div
+      class="sc-htoDjs coMbfJ"
+    >
+      ✕
+    </div>
+  </li>
+</div>
+`;

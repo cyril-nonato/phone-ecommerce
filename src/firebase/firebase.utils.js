@@ -40,7 +40,6 @@ export const createUserProfileDocument = async (userAuth, addtionalData) => {
 export const addCollectionAndDocument = async (collectionKey, ObjectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
 
-  console.log(collectionRef)
   const batch = firestore.batch();
 
   ObjectsToAdd.forEach(obj => {
@@ -53,6 +52,9 @@ export const addCollectionAndDocument = async (collectionKey, ObjectsToAdd) => {
 }
 
 export const convertQuerySnapshotToObj = querySnapshot => {
+  if(querySnapshot.empty) {
+    throw new Error('No such file')
+  }
   const convertedCollection = querySnapshot.docs
     .map(doc => {
       const { items, brand } = doc.data();
@@ -80,4 +82,4 @@ export const firestore = firebase.firestore();
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
 googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-export default firebase;
+export {firebase};

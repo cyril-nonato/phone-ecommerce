@@ -1,6 +1,6 @@
 import actionTypes from "./shop.types"
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   collections: null,
   collection: null,
   loading: false,

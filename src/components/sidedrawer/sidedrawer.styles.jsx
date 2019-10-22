@@ -10,7 +10,7 @@ export const positionHide = css`
 `;
 
 const checkPosition = (props) => {
-  if(props.showSideDrawer) {
+  if(props.checkForSidedrawer) {
     return positionShow
   } else {
     return positionHide

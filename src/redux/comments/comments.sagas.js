@@ -1,6 +1,6 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects'
 import actionTypes from './comments.types'
-import firebase, { firestore } from '../../firebase/firebase.utils';
+import { firestore, firebase } from '../../firebase/firebase.utils';
 import { getCommentsSuccess, getCommentsFailure } from './comments.actions';
 
 function* getCommentsStartAsync({ payload: { brandName, model } }) {
